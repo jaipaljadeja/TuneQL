@@ -8,8 +8,8 @@ export const size = { width: 1200, height: 630 };
 export const contentType = 'image/png';
 
 export default async function OpenGraphImage() {
-  const icon = await readFile(join(process.cwd(), 'public/icon.png'));
-  const iconDataUrl = `data:image/png;base64,${icon.toString('base64')}`;
+  const icon = await readFile(join(process.cwd(), 'public/TuneSQL.svg'));
+  const iconDataUrl = `data:image/svg+xml;base64,${icon.toString('base64')}`;
 
   return new ImageResponse(
     <div
@@ -24,13 +24,7 @@ export default async function OpenGraphImage() {
         background: '#0a0a0a',
       }}
     >
-      <img
-        src={iconDataUrl}
-        width={320}
-        height={320}
-        alt=""
-        style={{ borderRadius: 72 }}
-      />
+      <img src={iconDataUrl} width={320} height={320} alt="" />
       <div style={{ display: 'flex', flexDirection: 'column', maxWidth: 680 }}>
         <div
           style={{

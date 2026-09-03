@@ -77,13 +77,13 @@ export function Header({ onOpenConstraints }: HeaderProps) {
       <div className="flex items-center gap-3">
         <div className="flex items-center gap-2">
           <Image
-            src="/icon-192.png"
+            src="/TuneSQL.svg"
             alt=""
             width={32}
             height={32}
             priority
             unoptimized
-            className="size-8 rounded-lg shadow-xs"
+            className="size-8"
           />
           <div>
             <div className="flex items-center gap-2">

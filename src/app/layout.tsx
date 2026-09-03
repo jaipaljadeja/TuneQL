@@ -64,7 +64,7 @@ const softwareApplicationJsonLd = {
   name: 'TuneQL',
   description,
   url: siteUrl.toString(),
-  image: new URL('/icon.png', siteUrl).toString(),
+  image: new URL('/TuneSQL.svg', siteUrl).toString(),
   applicationCategory: 'DeveloperApplication',
   applicationSubCategory: 'Database development tool',
   operatingSystem: 'Any modern web browser',
