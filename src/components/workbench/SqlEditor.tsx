@@ -156,29 +156,29 @@ export function SqlEditor({ onTabChange }: SqlEditorProps) {
   return (
     <div className="flex flex-col h-full bg-card/20 select-text">
       {/* Editor Top Bar */}
-      <div className="h-[42px] border-b border-border/80 px-3 bg-muted/40 flex items-center justify-between select-none">
-        <div className="flex items-center gap-2">
+      <div className="h-[42px] min-w-0 gap-2 border-b border-border/80 px-3 bg-muted/40 flex items-center justify-between select-none">
+        <div className="min-w-0 flex items-center gap-2">
           <span className="text-xs font-semibold text-foreground">
             SQL Query
           </span>
           {isQueryModified ? (
             <Badge
               variant="outline"
-              className="text-[10px] py-0 px-1.5 border-amber-500/40 text-amber-300 font-mono"
+              className="hidden text-[10px] py-0 px-1.5 border-amber-500/40 text-amber-300 font-mono xl:inline-flex"
             >
               Candidate Rewrite
             </Badge>
           ) : hasBaseline ? (
             <Badge
               variant="outline"
-              className="text-[10px] py-0 px-1.5 border-sky-500/40 text-sky-300 font-mono"
+              className="hidden text-[10px] py-0 px-1.5 border-sky-500/40 text-sky-300 font-mono xl:inline-flex"
             >
               Baseline Query
             </Badge>
           ) : (
             <Badge
               variant="outline"
-              className="text-[10px] py-0 px-1.5 border-border/60 text-muted-foreground font-mono"
+              className="hidden text-[10px] py-0 px-1.5 border-border/60 text-muted-foreground font-mono xl:inline-flex"
             >
               Ready
             </Badge>
@@ -186,7 +186,7 @@ export function SqlEditor({ onTabChange }: SqlEditorProps) {
         </div>
 
         {/* Action Buttons */}
-        <div className="flex items-center gap-1.5">
+        <div className="shrink-0 flex items-center gap-1.5">
           <Button
             variant="default"
             size="sm"
@@ -204,7 +204,7 @@ export function SqlEditor({ onTabChange }: SqlEditorProps) {
             <span>Run</span>
             <KeyboardShortcut
               keys={['⌘', '↵']}
-              className="ml-0.5 hidden opacity-80 sm:inline-flex"
+              className="ml-0.5 hidden opacity-80 xl:inline-flex"
             />
           </Button>
 
@@ -225,7 +225,7 @@ export function SqlEditor({ onTabChange }: SqlEditorProps) {
             <span>Explain</span>
             <KeyboardShortcut
               keys={['⌘', '⇧', 'E']}
-              className="ml-0.5 hidden opacity-80 sm:inline-flex"
+              className="ml-0.5 hidden opacity-80 xl:inline-flex"
             />
           </Button>
 
@@ -246,7 +246,7 @@ export function SqlEditor({ onTabChange }: SqlEditorProps) {
             <span>Benchmark</span>
             <KeyboardShortcut
               keys={['⌘', '⇧', 'B']}
-              className="ml-0.5 hidden opacity-80 sm:inline-flex"
+              className="ml-0.5 hidden opacity-80 xl:inline-flex"
             />
           </Button>
 
@@ -265,7 +265,7 @@ export function SqlEditor({ onTabChange }: SqlEditorProps) {
             ) : (
               <BookmarkCheck className="size-3.5 shrink-0 text-sky-400" />
             )}
-            <span>Set Baseline</span>
+            <span className="hidden xl:inline">Set Baseline</span>
           </Button>
 
           <Tooltip>
@@ -295,7 +295,7 @@ export function SqlEditor({ onTabChange }: SqlEditorProps) {
         >
           <AlertCircle />
           <AlertTitle className="text-xs">Query operation failed</AlertTitle>
-          <AlertDescription className="font-mono text-[11px]">
+          <AlertDescription className="font-mono text-[11px] [overflow-wrap:anywhere]">
             {actionError}
           </AlertDescription>
         </Alert>

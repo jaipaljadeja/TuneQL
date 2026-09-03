@@ -71,9 +71,9 @@ export function OptimizationChanges({
   );
 
   return (
-    <section className="rounded-lg border border-border/70 bg-card/30">
-      <div className="flex items-center justify-between border-b border-border/60 px-4 py-3">
-        <div>
+    <section className="min-w-0 rounded-lg border border-border/70 bg-card/30">
+      <div className="flex flex-wrap items-start justify-between gap-2 border-b border-border/60 px-4 py-3">
+        <div className="min-w-0">
           <h3 className="text-xs font-semibold text-foreground">
             What changed
           </h3>
@@ -81,7 +81,7 @@ export function OptimizationChanges({
             Candidate changes measured against the saved baseline.
           </p>
         </div>
-        <span className="font-mono text-[10px] text-muted-foreground">
+        <span className="max-w-full text-right font-mono text-[10px] text-muted-foreground [overflow-wrap:anywhere]">
           {queryChanged ? 'Query rewritten' : 'Query unchanged'} ·{' '}
           {addedIndexes.length} index added
         </span>
@@ -125,7 +125,7 @@ export function OptimizationChanges({
           )}
         </div>
 
-        <div className="p-3">
+        <div className="min-w-0 p-3">
           <div className="mb-2 flex items-center gap-1.5 text-[10px] font-semibold uppercase tracking-wider text-muted-foreground">
             <Database className="size-3.5 text-emerald-400" />
             Index changes
@@ -134,14 +134,14 @@ export function OptimizationChanges({
             {addedIndexes.map((index) => (
               <div
                 key={indexKey(index)}
-                className="rounded-md border border-emerald-500/25 bg-emerald-500/5 p-2.5"
+                className="min-w-0 rounded-md border border-emerald-500/25 bg-emerald-500/5 p-2.5"
               >
                 <div className="flex items-center gap-2">
-                  <span className="font-mono text-xs font-medium text-emerald-300">
+                  <span className="min-w-0 font-mono text-xs font-medium leading-relaxed text-emerald-300 [overflow-wrap:anywhere]">
                     + {index.name}
                   </span>
                 </div>
-                <p className="mt-1 font-mono text-[10px] text-muted-foreground">
+                <p className="mt-1 font-mono text-[10px] leading-relaxed text-muted-foreground [overflow-wrap:anywhere]">
                   {index.table} ({index.columns.join(', ')})
                 </p>
               </div>
@@ -149,12 +149,12 @@ export function OptimizationChanges({
             {removedIndexes.map((index) => (
               <div
                 key={indexKey(index)}
-                className="rounded-md border border-rose-500/25 bg-rose-500/5 p-2.5"
+                className="min-w-0 rounded-md border border-rose-500/25 bg-rose-500/5 p-2.5"
               >
-                <span className="font-mono text-xs font-medium text-rose-300">
+                <span className="block min-w-0 font-mono text-xs font-medium leading-relaxed text-rose-300 [overflow-wrap:anywhere]">
                   − {index.name}
                 </span>
-                <p className="mt-1 font-mono text-[10px] text-muted-foreground">
+                <p className="mt-1 font-mono text-[10px] leading-relaxed text-muted-foreground [overflow-wrap:anywhere]">
                   {index.table} ({index.columns.join(', ')})
                 </p>
               </div>

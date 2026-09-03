@@ -180,11 +180,13 @@ export function PerformanceInspector({
                         : 'border-sky-500/40 bg-sky-500/5 text-sky-300'
                   }`}
                 >
-                  <div className="flex items-center gap-1.5 font-semibold">
+                  <div className="flex min-w-0 items-start gap-1.5 font-semibold">
                     <AlertTriangle className="w-3.5 h-3.5 shrink-0" />
-                    <span>{f.title}</span>
+                    <span className="min-w-0 [overflow-wrap:anywhere]">
+                      {f.title}
+                    </span>
                   </div>
-                  <p className="text-[10px] text-muted-foreground leading-normal">
+                  <p className="text-[10px] text-muted-foreground leading-normal [overflow-wrap:anywhere]">
                     {f.description}
                   </p>
                 </div>
@@ -215,8 +217,8 @@ export function PerformanceInspector({
           <div className="space-y-1.5 mt-1">
             {/* Baseline Attempt */}
             {baseline && (
-              <div className="p-2 rounded-md border border-sky-500/30 bg-sky-500/5 flex items-center justify-between text-[11px]">
-                <div className="flex items-center gap-1.5">
+              <div className="p-2 rounded-md border border-sky-500/30 bg-sky-500/5 flex items-center justify-between gap-1 text-[11px]">
+                <div className="min-w-0 flex flex-wrap items-center gap-1.5">
                   <span className="font-bold text-sky-400 font-mono">
                     #0 (Baseline)
                   </span>
@@ -228,7 +230,7 @@ export function PerformanceInspector({
                   variant="ghost"
                   size="sm"
                   onClick={() => setAttemptToRestore(baseline.id)}
-                  className="h-5 px-1.5 text-[10px] hover:text-sky-300 gap-1"
+                  className="h-5 shrink-0 px-1.5 text-[10px] hover:text-sky-300 gap-1"
                 >
                   <RotateCcw className="w-2.5 h-2.5" /> Restore
                 </Button>
@@ -239,9 +241,9 @@ export function PerformanceInspector({
             {workspace.attempts.map((att) => (
               <div
                 key={att.id}
-                className="p-2 rounded-md border border-border/50 bg-background/20 flex items-center justify-between text-[11px] font-mono"
+                className="p-2 rounded-md border border-border/50 bg-background/20 flex items-center justify-between gap-1 text-[11px] font-mono"
               >
-                <div className="flex items-center gap-1.5">
+                <div className="min-w-0 flex flex-wrap items-center gap-1.5">
                   {att.source === 'agent' ? (
                     <span title="Agent action" aria-label="Agent action">
                       <Bot className="w-3 h-3 text-indigo-400 shrink-0" />
@@ -267,7 +269,7 @@ export function PerformanceInspector({
                   variant="ghost"
                   size="sm"
                   onClick={() => setAttemptToRestore(att.id)}
-                  className="h-5 px-1.5 text-[10px] hover:text-emerald-400 gap-1"
+                  className="h-5 shrink-0 px-1.5 text-[10px] hover:text-emerald-400 gap-1"
                 >
                   <RotateCcw className="w-2.5 h-2.5" /> Restore
                 </Button>

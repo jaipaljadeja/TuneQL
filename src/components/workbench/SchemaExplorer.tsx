@@ -48,9 +48,9 @@ export function SchemaExplorer({ onOpenCreateIndex }: SchemaExplorerProps) {
     <aside className="min-w-0 bg-card/40 flex flex-col h-full select-none text-xs">
       {/* Sidebar Header */}
       <div className="p-3 border-b border-border/80 flex items-center justify-between">
-        <div className="flex items-center gap-1.5 font-semibold text-foreground">
-          <Database className="w-3.5 h-3.5 text-sky-400" />
-          <span>Schema & Indexes</span>
+        <div className="min-w-0 flex items-center gap-1.5 font-semibold text-foreground">
+          <Database className="w-3.5 h-3.5 shrink-0 text-sky-400" />
+          <span className="truncate">Schema & Indexes</span>
         </div>
         <span className="text-[11px] text-muted-foreground font-mono">
           {schema.tables.length} tables
@@ -76,16 +76,18 @@ export function SchemaExplorer({ onOpenCreateIndex }: SchemaExplorerProps) {
                     onClick={() => toggleTable(table.name)}
                     className="w-full px-2.5 py-1.5 flex items-center justify-between text-left hover:bg-accent/40 transition-colors"
                   >
-                    <div className="flex items-center gap-1.5 font-medium text-foreground">
+                    <div className="min-w-0 flex flex-1 items-center gap-1.5 font-medium text-foreground">
                       {isExpanded ? (
                         <ChevronDown className="w-3.5 h-3.5 text-muted-foreground" />
                       ) : (
                         <ChevronRight className="w-3.5 h-3.5 text-muted-foreground" />
                       )}
                       <Table2 className="w-3.5 h-3.5 text-sky-400" />
-                      <span>{table.name}</span>
+                      <span className="truncate" title={table.name}>
+                        {table.name}
+                      </span>
                     </div>
-                    <span className="text-[10px] text-muted-foreground font-mono">
+                    <span className="shrink-0 pl-2 text-[10px] text-muted-foreground font-mono">
                       {table.estimatedRows.toLocaleString()} rows
                     </span>
                   </button>
@@ -97,7 +99,7 @@ export function SchemaExplorer({ onOpenCreateIndex }: SchemaExplorerProps) {
                           key={col.name}
                           className="flex items-center justify-between py-0.5 text-muted-foreground"
                         >
-                          <div className="flex items-center gap-1.5 truncate">
+                          <div className="min-w-0 flex flex-1 items-center gap-1.5">
                             {col.name === 'id' ? (
                               <Key className="w-3 h-3 text-amber-400 shrink-0" />
                             ) : (
@@ -105,11 +107,17 @@ export function SchemaExplorer({ onOpenCreateIndex }: SchemaExplorerProps) {
                                 ·
                               </span>
                             )}
-                            <span className="truncate text-foreground/90">
+                            <span
+                              className="truncate text-foreground/90"
+                              title={col.name}
+                            >
                               {col.name}
                             </span>
                           </div>
-                          <span className="text-[10px] text-muted-foreground/70 shrink-0">
+                          <span
+                            className="max-w-[45%] shrink-0 truncate pl-2 text-[10px] text-muted-foreground/70"
+                            title={col.type}
+                          >
                             {col.type}
                           </span>
                         </div>
@@ -144,10 +152,13 @@ export function SchemaExplorer({ onOpenCreateIndex }: SchemaExplorerProps) {
                 key={idx.name}
                 className="p-2 rounded-md border border-emerald-500/40 bg-emerald-500/5 flex flex-col gap-1 shadow-xs"
               >
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-1 font-medium text-emerald-400 truncate">
+                <div className="flex min-w-0 items-center justify-between gap-1">
+                  <div className="min-w-0 flex items-center gap-1 font-medium text-emerald-400">
                     <Zap className="w-3 h-3 shrink-0 text-emerald-400" />
-                    <span className="truncate font-mono text-[11px]">
+                    <span
+                      className="truncate font-mono text-[11px]"
+                      title={idx.name}
+                    >
                       {idx.name}
                     </span>
                   </div>
@@ -155,15 +166,15 @@ export function SchemaExplorer({ onOpenCreateIndex }: SchemaExplorerProps) {
                     variant="ghost"
                     size="sm"
                     onClick={() => setIndexToDrop(idx.name)}
-                    className="h-5 w-5 p-0 text-muted-foreground hover:text-destructive hover:bg-destructive/10"
+                    className="h-5 w-5 shrink-0 p-0 text-muted-foreground hover:text-destructive hover:bg-destructive/10"
                     title="Drop Index"
                     aria-label={`Drop index ${idx.name}`}
                   >
                     <Trash2 className="w-3 h-3" />
                   </Button>
                 </div>
-                <div className="flex items-center gap-1 text-[10px] text-muted-foreground font-mono">
-                  <span className="text-foreground/80">{idx.table}</span>
+                <div className="min-w-0 font-mono text-[10px] text-muted-foreground [overflow-wrap:anywhere]">
+                  <span className="text-foreground/80">{idx.table}</span>{' '}
                   <span>({idx.columns.join(', ')})</span>
                 </div>
                 <Badge
@@ -181,16 +192,19 @@ export function SchemaExplorer({ onOpenCreateIndex }: SchemaExplorerProps) {
                 key={idx.name}
                 className="p-2 rounded-md border border-border/40 bg-background/20 flex flex-col gap-0.5 opacity-80"
               >
-                <div className="flex items-center justify-between">
-                  <span className="font-mono text-[11px] text-muted-foreground truncate">
+                <div className="flex min-w-0 items-center justify-between gap-1">
+                  <span
+                    className="min-w-0 truncate font-mono text-[11px] text-muted-foreground"
+                    title={idx.name}
+                  >
                     {idx.name}
                   </span>
                   <span title="Protected System Index">
                     <ShieldCheck className="w-3 h-3 text-muted-foreground/50 shrink-0" />
                   </span>
                 </div>
-                <div className="flex items-center gap-1 text-[10px] text-muted-foreground/70 font-mono">
-                  <span>{idx.table}</span>
+                <div className="min-w-0 font-mono text-[10px] text-muted-foreground/70 [overflow-wrap:anywhere]">
+                  <span>{idx.table}</span>{' '}
                   <span>({idx.columns.join(', ')})</span>
                 </div>
               </div>

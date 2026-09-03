@@ -38,8 +38,8 @@ export function ResultsTable() {
   return (
     <div className="h-full flex flex-col overflow-hidden text-xs">
       {/* Table Summary Bar */}
-      <div className="px-3 py-1.5 border-b border-border/70 bg-muted/20 flex items-center justify-between text-muted-foreground select-none">
-        <div className="flex items-center gap-2">
+      <div className="px-3 py-1.5 border-b border-border/70 bg-muted/20 flex flex-wrap items-center justify-between gap-2 text-muted-foreground select-none">
+        <div className="min-w-0 flex flex-wrap items-center gap-2">
           <span className="font-medium text-foreground">Query Results</span>
           <Badge
             variant="outline"
@@ -56,7 +56,7 @@ export function ResultsTable() {
             </Badge>
           )}
         </div>
-        <div className="flex items-center gap-1.5 text-[11px] font-mono text-emerald-400">
+        <div className="shrink-0 flex items-center gap-1.5 text-[11px] font-mono text-emerald-400">
           <Clock className="w-3.5 h-3.5" />
           <span>{result.durationMs} ms</span>
         </div>

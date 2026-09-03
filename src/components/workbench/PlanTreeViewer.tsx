@@ -104,7 +104,7 @@ function PlanNodeCard({ node, depth }: { node: PlanNode; depth: number }) {
       >
         {/* Node Title Line */}
         <div className="flex flex-wrap items-center justify-between gap-2">
-          <div className="flex items-center gap-2">
+          <div className="min-w-0 flex flex-wrap items-center gap-2">
             <span
               className={`font-semibold text-xs ${
                 isSeqScan
@@ -117,14 +117,14 @@ function PlanNodeCard({ node, depth }: { node: PlanNode; depth: number }) {
               {node.nodeType}
             </span>
             {node.relationName && (
-              <span className="text-[11px] text-sky-400 font-medium">
+              <span className="min-w-0 text-[11px] text-sky-400 font-medium [overflow-wrap:anywhere]">
                 on {node.relationName}
               </span>
             )}
             {node.indexName && (
               <Badge
                 variant="outline"
-                className="text-[10px] py-0 px-1 font-mono border-emerald-500/30 text-emerald-300"
+                className="max-w-full whitespace-normal px-1 py-0 text-[10px] font-mono border-emerald-500/30 text-emerald-300 [overflow-wrap:anywhere]"
               >
                 using {node.indexName}
               </Badge>
@@ -160,7 +160,9 @@ function PlanNodeCard({ node, depth }: { node: PlanNode; depth: number }) {
             {node.filter && (
               <div className="flex items-start gap-1.5 text-amber-300/90">
                 <Filter className="w-3 h-3 mt-0.5 shrink-0 text-amber-400" />
-                <span>Filter: {node.filter}</span>
+                <span className="min-w-0 [overflow-wrap:anywhere]">
+                  Filter: {node.filter}
+                </span>
               </div>
             )}
             {node.rowsRemovedByFilter !== undefined &&
@@ -174,12 +176,12 @@ function PlanNodeCard({ node, depth }: { node: PlanNode; depth: number }) {
                 </div>
               )}
             {node.indexCond && (
-              <div className="text-emerald-300/90">
+              <div className="text-emerald-300/90 [overflow-wrap:anywhere]">
                 <span>Index Cond: {node.indexCond}</span>
               </div>
             )}
             {node.hashCond && (
-              <div className="text-muted-foreground">
+              <div className="text-muted-foreground [overflow-wrap:anywhere]">
                 <span>Hash Cond: {node.hashCond}</span>
               </div>
             )}

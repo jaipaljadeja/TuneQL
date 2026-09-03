@@ -193,7 +193,10 @@ export function CreateWorkspaceDialog(props: CreateWorkspaceDialogProps) {
           </label>
         )}
         {error && (
-          <p role="alert" className="text-xs text-destructive font-mono">
+          <p
+            role="alert"
+            className="text-xs text-destructive font-mono [overflow-wrap:anywhere]"
+          >
             {error}
           </p>
         )}

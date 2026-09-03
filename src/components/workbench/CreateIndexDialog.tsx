@@ -138,7 +138,7 @@ export function CreateIndexDialog({
                     key={col}
                     type="button"
                     onClick={() => toggleColumn(col)}
-                    className={`px-2.5 py-1 rounded border text-[11px] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring ${
+                    className={`max-w-full break-all px-2.5 py-1 rounded border text-[11px] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring ${
                       isSelected
                         ? 'border-emerald-500 bg-emerald-500 text-white font-bold'
                         : 'border-border/60 bg-background/40 hover:bg-accent text-foreground'
@@ -175,7 +175,7 @@ export function CreateIndexDialog({
               <span className="text-[10px] uppercase font-bold text-muted-foreground/60 block mb-1">
                 Generated DDL
               </span>
-              <code className="text-emerald-400">
+              <code className="text-emerald-400 [overflow-wrap:anywhere]">
                 CREATE INDEX {quote(generatedName)} ON {quote(selectedTable)} (
                 {selectedColumns.length
                   ? selectedColumns.map(quote).join(', ')
