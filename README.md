@@ -23,11 +23,27 @@ Benchmark numbers are local measurements. They should be used for comparison, no
 
 ### PostgreSQL optimization workbench
 
-![TuneQL workbench](screenshots/workbench.png)
+![TuneQL workbench](screenshots/01-workbench.png)
+
+### Verified optimization
+
+![TuneQL comparison](screenshots/02-comparison.png)
 
 ### WebMCP agent optimization
 
-![TuneQL used through WebMCP](screenshots/webmcp-agent.png)
+![TuneQL used through WebMCP](screenshots/04-webmcp-agent.png)
+
+### Execution plan
+
+![TuneQL execution plan](screenshots/06-execution-plan.png)
+
+### Create a workspace
+
+![Create a TuneQL workspace](screenshots/03-create-workspace.png)
+
+### Optimization constraints
+
+![TuneQL optimization constraints](screenshots/05-constraints.png)
 
 ## WebMCP
 
